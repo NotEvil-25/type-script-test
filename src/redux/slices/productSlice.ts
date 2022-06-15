@@ -42,16 +42,15 @@ export const productSlice = createSlice({
   reducers: {
     deleteBrandFilter: (state, action: PayloadAction<number>) => {
       const { payload } = action;
-      const { brand } = state.filter;
 
-      state.filter.brand = brand.filter((el) => (el !== payload));
+      state.filter.brand = state.filter.brand.filter((el) => (el !== payload));
       state.filteredProducts = [];
 
       // надо было middleware использовать, что бы такой дичи не было
       // TODO: переделать редусер
-      for (let i = 0; i < brand.length - 1; i++) {
+      for (let i = 0; i < state.filter.brand.length; i++) {
         state.filteredProducts.push(
-          ...state.allProducts.filter((el) => (el.brand === brand[i] || el.brand === brand[payload])),
+          ...state.allProducts.filter((el) => (el.brand === state.filter.brand[i])),
         );
       }
       if (!state.filteredProducts.length) {
@@ -60,15 +59,14 @@ export const productSlice = createSlice({
     },
     filterByBrands: (state, action: PayloadAction<number>) => {
       const { payload } = action;
-      const { brand } = state.filter;
 
       state.filter.brand.push(payload);
       state.filteredProducts = [];
 
       // надо было middleware использовать, что бы такой дичи не было
       // TODO: переделать редусер
-      for (let i = 0; i < brand.length; i++) {
-        state.filteredProducts.push(...state.allProducts.filter((el) => (el.brand === brand[i])));
+      for (let i = 0; i < state.filter.brand.length; i++) {
+        state.filteredProducts.push(...state.allProducts.filter((el) => (el.brand === state.filter.brand[i])));
       }
     },
   },
