@@ -1,10 +1,7 @@
-/* eslint-disable max-len */
-/* eslint-disable no-plusplus */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-cycle */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
 /* eslint-disable arrow-body-style */
-/* eslint-disable @typescript-eslint/semi */
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { getProducts } from '../../fakeApi';
 import Iproducts from '../../models/Iproducts';
@@ -47,7 +44,6 @@ export const productSlice = createSlice({
       state.filteredProducts = [];
 
       // надо было middleware использовать, что бы такой дичи не было
-      // TODO: переделать редусер
       for (let i = 0; i < state.filter.brand.length; i++) {
         state.filteredProducts.push(
           ...state.allProducts.filter((el) => (el.brand === state.filter.brand[i])),
@@ -64,9 +60,10 @@ export const productSlice = createSlice({
       state.filteredProducts = [];
 
       // надо было middleware использовать, что бы такой дичи не было
-      // TODO: переделать редусер
       for (let i = 0; i < state.filter.brand.length; i++) {
-        state.filteredProducts.push(...state.allProducts.filter((el) => (el.brand === state.filter.brand[i])));
+        state.filteredProducts.push(...state.allProducts.filter(
+          (el) => (el.brand === state.filter.brand[i]),
+        ));
       }
     },
   },
@@ -78,15 +75,15 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.filteredProducts = action.payload;
       state.allProducts = action.payload;
-    })
+    });
   },
-})
+});
 
-export const { filterByBrands, deleteBrandFilter } = productSlice.actions
+export const { filterByBrands, deleteBrandFilter } = productSlice.actions;
 
 export const selectProduct = (state: RootState) => state.product.filteredProducts;
 export const selectAllProducts = (state: RootState) => state.product.allProducts;
-export const selectLoading = (state: RootState) => state.product.isLoading;
+export const selectProductsLoading = (state: RootState) => state.product.isLoading;
 export const selectFilterBrand = (state: RootState) => state.product.filter.brand;
 
-export default productSlice.reducer
+export default productSlice.reducer;

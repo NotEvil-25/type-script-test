@@ -1,12 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-cycle */
-/* eslint-disable no-param-reassign */
 /* eslint-disable arrow-body-style */
-/* eslint-disable @typescript-eslint/semi */
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { getBrands } from '../../fakeApi';
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import IcartItems from '../../models/IcartItems';
-import Iproducts from '../../models/Iproducts';
 import { RootState } from '../store';
 
 interface CartState {
@@ -35,7 +31,7 @@ export const cartSlice = createSlice({
       state.subtotal += value;
     },
     deleteItem: (state, action: PayloadAction<number>) => {
-      state.addedItems = state.addedItems.filter((el) => (el.id !== action.payload))
+      state.addedItems = state.addedItems.filter((el) => (el.id !== action.payload));
     },
     setCount: (state, action: PayloadAction<Icount>) => {
       const { payload } = action;
@@ -46,14 +42,18 @@ export const cartSlice = createSlice({
       });
     },
     setSubtotal: (state, action: PayloadAction<number>) => {
+      if (action.payload === 0) {
+        state.subtotal = action.payload;
+        return;
+      }
       state.subtotal += action.payload;
     },
   },
-})
+});
 
 export const {
   addItem, deleteItem, setCount, setSubtotal,
-} = cartSlice.actions
+} = cartSlice.actions;
 
 export const selectAddedItems = (state: RootState) => state.cart.addedItems;
 export const selectSubtotal = (state: RootState) => state.cart.subtotal;

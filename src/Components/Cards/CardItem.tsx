@@ -11,7 +11,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Iproducts from '../../models/Iproducts';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectBrand } from '../../redux/slices/brandSlice';
-import Ibrands from '../../models/Ibrands';
 import { addItem, selectAddedItems } from '../../redux/slices/cartSlice';
 
 interface Iprops {

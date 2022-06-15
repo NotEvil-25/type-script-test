@@ -44,6 +44,6 @@ export const brandSlice = createSlice({
 // export const {  } = productSlice.actions
 
 export const selectBrand = (state: RootState) => state.brand.brands;
-export const selectLoading = (state: RootState) => state.brand.isLoading;
+export const selectBrandLoading = (state: RootState) => state.brand.isLoading;
 
 export default brandSlice.reducer;

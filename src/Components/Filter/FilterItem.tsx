@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC } from 'react';
 import FormGroup from '@mui/material/FormGroup';
@@ -13,7 +14,8 @@ interface Iprops {
 
 const FilterItem: FC<Iprops> = ({ data }) => {
   const dispatch = useAppDispatch();
-  const activeBrands = useAppSelector(selectFilterBrand);
+  const brandFilter = useAppSelector(selectFilterBrand);
+  const isChecked = !!brandFilter.find((brand) => (brand === data.id));
 
   const handleFilter = (event) => {
     const { checked } = event.target;
@@ -29,7 +31,7 @@ const FilterItem: FC<Iprops> = ({ data }) => {
       <FormControlLabel
         onChange={handleFilter}
         control={
-          <Checkbox name={data.code} />
+          <Checkbox checked={isChecked} name={data.code} />
           }
         label={data.title}
       />
