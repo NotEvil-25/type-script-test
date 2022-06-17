@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0b075327.css","mappings":"AAAA,MAIE,wBAAyB,CAFzB,YAAa,CACb,qBAAsB,CAFtB,gBAIF","sources":["Components/App/style.css"],"sourcesContent":["#root {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  background-color: #F6F9FC;\n}"],"names":[],"sourceRoot":""}
