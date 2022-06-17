@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/typeScriptTask/static/css/main.0b075327.css",
-    "main.js": "/typeScriptTask/static/js/main.0fa55a86.js",
-    "index.html": "/typeScriptTask/index.html",
-    "main.0b075327.css.map": "/typeScriptTask/static/css/main.0b075327.css.map",
-    "main.0fa55a86.js.map": "/typeScriptTask/static/js/main.0fa55a86.js.map"
+    "main.css": "/type-script-test/static/css/main.0b075327.css",
+    "main.js": "/type-script-test/static/js/main.0fa55a86.js",
+    "index.html": "/type-script-test/index.html",
+    "main.0b075327.css.map": "/type-script-test/static/css/main.0b075327.css.map",
+    "main.0fa55a86.js.map": "/type-script-test/static/js/main.0fa55a86.js.map"
   },
   "entrypoints": [
     "static/css/main.0b075327.css",
